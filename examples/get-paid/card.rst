@@ -22,7 +22,7 @@ Card
     }
     
     r = flw.card.tokenize(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     
     # RESPONSE
@@ -54,7 +54,7 @@ Card
     }
     
     r = flw.card.validate(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -94,7 +94,7 @@ Card
     }
     
     r = flw.card.charge(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -128,7 +128,7 @@ Card
     }
     
     r = flw.card.chargeWithToken(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -156,7 +156,7 @@ Card
     country = "NG"                       # Country code (NG)
     
     r = flw.card.verifyCharge(transactionRef, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -195,7 +195,7 @@ Card
     }
     
     r = flw.card.preauth(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -229,7 +229,7 @@ Card
     }
     
     r = flw.card.capture(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -263,7 +263,7 @@ Card
     }
     
     r = flw.card.void(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -297,7 +297,7 @@ Card
     }
     
     r = flw.card.refund(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
     # {
@@ -333,7 +333,7 @@ Card
     }
     
     r = flw.card.balanceEnquiry(payload)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
     
     # RESPONSE
 
@@ -354,6 +354,6 @@ Card
     }
     
     r = flw.card.validateBalanceEnquiry(payload)
-    print "{}".format(r.text)
+    print("{}".format(r.text)
     
     # RESPONSE

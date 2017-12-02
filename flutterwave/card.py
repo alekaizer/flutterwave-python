@@ -1,4 +1,5 @@
-from utils import Utils
+from .utils import Utils
+
 
 class Card(Utils):
     """Flutterwave Card module
@@ -8,7 +9,6 @@ class Card(Utils):
 
     def __init__(self, util):
         self.util = util
-
 
     def tokenize(self, requestData):
         """Request a card token
@@ -25,7 +25,8 @@ class Card(Utils):
         '"""
         payload = {
             "merchantid": self.util.merchantKey,
-            "validateoption": self.util.encryptData(requestData['validateOption']),
+            "validateoption": self.util.encryptData(
+                requestData['validateOption']),
             "authmodel": self.util.encryptData(requestData['authModel']),
             "cardno": self.util.encryptData(requestData['cardNumber']),
             "cvv": self.util.encryptData(requestData['cvv']),
@@ -35,7 +36,6 @@ class Card(Utils):
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.cardTokenizeRoute, payload);
-
 
     def charge(self, requestData):
         """Request to charge a card 
@@ -61,7 +61,7 @@ class Card(Utils):
             "authmodel": self.util.encryptData(requestData['authModel']),
             "cardno": self.util.encryptData(requestData['cardNumber']),
             "currency": self.util.encryptData(requestData['currency']),
-            "custid":  self.util.encryptData(requestData['customerID']),
+            "custid": self.util.encryptData(requestData['customerID']),
             "cvv": self.util.encryptData(requestData['cvv']),
             "expirymonth": self.util.encryptData(requestData['expiryMonth']),
             "expiryyear": self.util.encryptData(requestData['expiryYear']),
@@ -69,20 +69,20 @@ class Card(Utils):
             "country": self.util.encryptData(requestData['country'])
         }
 
-        if('pin' in requestData):
+        if ('pin' in requestData):
             payload["pin"] = self.util.encryptData(requestData['pin'])
 
-        if('bvn' in requestData):
+        if ('bvn' in requestData):
             payload["bvn"] = self.util.encryptData(requestData['bvn'])
 
-        if('responseUrl' in requestData):
-            payload["responseurl"] = self.util.encryptData(requestData['responseUrl'])
+        if ('responseUrl' in requestData):
+            payload["responseurl"] = self.util.encryptData(
+                requestData['responseUrl'])
 
-        if('cardtype' in requestData):
+        if ('cardtype' in requestData):
             payload["cardtype"] = self.util.encryptData(requestData['cardtype'])
 
         return self.util.sendRequest(self.util.cardChargeRoute, payload);
-
 
     def chargeWithToken(self, requestData):
         """Request to charge a card using a card token
@@ -105,11 +105,11 @@ class Card(Utils):
             "country": self.util.encryptData(requestData['country'])
         }
 
-        if('cardtype' in requestData):
-            payload["cardtype"] = self.util.encryptData(requestData['cardtype']),
+        if ('cardtype' in requestData):
+            payload["cardtype"] = self.util.encryptData(
+                requestData['cardtype']),
 
         return self.util.sendRequest(self.util.cardChargeRoute, payload);
-
 
     def verifyCharge(self, transactionRef, country):
         """Request to verify a charge transaction using the returned transaction reference
@@ -125,7 +125,6 @@ class Card(Utils):
 
         return self.util.sendRequest(self.util.cardChargeVerifyRoute, payload);
 
-
     def validate(self, requestData):
         """Request to validate a card charge transaction
         
@@ -137,15 +136,16 @@ class Card(Utils):
         payload = {
             "merchantid": self.util.merchantKey,
             "otp": self.util.encryptData(requestData['otp']),
-            "otptransactionidentifier": self.util.encryptData(requestData['otpTransactionIdentifier']),
+            "otptransactionidentifier": self.util.encryptData(
+                requestData['otpTransactionIdentifier']),
             "country": self.util.encryptData(requestData['country'])
         }
 
-        if('cardtype' in requestData):
-            payload["cardtype"] = self.util.encryptData(requestData['cardtype']),
+        if ('cardtype' in requestData):
+            payload["cardtype"] = self.util.encryptData(
+                requestData['cardtype']),
 
         return self.util.sendRequest(self.util.cardValidateRoute, payload);
-
 
     def preauth(self, requestData):
         """Request a PreAuthorization / Hold on a card for a specified amount
@@ -164,7 +164,6 @@ class Card(Utils):
         }
         return self.util.sendRequest(self.util.cardPreauthRoute, payload);
 
-
     def capture(self, requestData):
         """Request a Capture / Accept on a preauthorized amount on a card
         
@@ -179,13 +178,13 @@ class Card(Utils):
             "merchantid": self.util.merchantKey,
             "amount": self.util.encryptData(requestData['amount']),
             "currency": self.util.encryptData(requestData['currency']),
-            "trxreference": self.util.encryptData(requestData['transactionRef']),
+            "trxreference": self.util.encryptData(
+                requestData['transactionRef']),
             "trxauthorizeid": self.util.encryptData(requestData['authorizeID']),
             "country": self.util.encryptData(requestData['country'])
         }
 
         return self.util.sendRequest(self.util.cardCaptureRoute, payload);
-
 
     def refund(self, requestData):
         """Request a Refund on a charged card
@@ -201,12 +200,12 @@ class Card(Utils):
             "merchantid": self.util.merchantKey,
             "amount": self.util.encryptData(requestData['amount']),
             "currency": self.util.encryptData(requestData['currency']),
-            "trxreference": self.util.encryptData(requestData['transactionRef']),
+            "trxreference": self.util.encryptData(
+                requestData['transactionRef']),
             "trxauthorizeid": self.util.encryptData(requestData['authorizeID']),
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.cardRefundRoute, payload);
-
 
     def void(self, requestData):
         """Request a Refund on a charged card
@@ -222,12 +221,12 @@ class Card(Utils):
             "merchantid": self.util.merchantKey,
             "amount": self.util.encryptData(requestData['amount']),
             "currency": self.util.encryptData(requestData['currency']),
-            "trxreference": self.util.encryptData(requestData['transactionRef']),
+            "trxreference": self.util.encryptData(
+                requestData['transactionRef']),
             "trxauthorizeid": self.util.encryptData(requestData['authorizeID']),
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.cardVoidRoute, payload);
-
 
     def balanceEnquiry(self, requestData):
         """Request funds balance on a card
@@ -248,13 +247,11 @@ class Card(Utils):
             "expirymonth": self.util.encryptData(requestData['expiryMonth']),
             "expiryyear": self.util.encryptData(requestData['expiryYear']),
             "pin": self.util.encryptData(requestData['pin']),
-            "trxreference": self.util.encryptData(requestData['transactionRef']),
+            "trxreference": self.util.encryptData(
+                requestData['transactionRef']),
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.cardBalanceroute, payload);
-
-
-
 
     def validateBalanceEnquiry(self, requestData):
         """Validate a request for funds balance on a card
@@ -267,8 +264,11 @@ class Card(Utils):
         payload = {
             "merchantid": self.util.merchantKey,
             "otp": self.util.encryptData(requestData['otp']),
-            "otptransactionidentifier": self.util.encryptData(requestData['otpTransactionIdentifier']),
-            "trxreference": self.util.encryptData(requestData['transactionRef']),
+            "otptransactionidentifier": self.util.encryptData(
+                requestData['otpTransactionIdentifier']),
+            "trxreference": self.util.encryptData(
+                requestData['transactionRef']),
             "country": self.util.encryptData(requestData['country'])
         }
-        return self.util.sendRequest(self.util.validateCardBalanceroute, payload);
+        return self.util.sendRequest(self.util.validateCardBalanceroute,
+                                     payload)

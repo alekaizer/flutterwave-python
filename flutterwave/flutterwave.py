@@ -1,14 +1,15 @@
-from utils import Utils
-from ip import Ip
-from bvn import Bvn
-from account import Account
-from bin import Bin
-from disburse import Disburse
-from card import Card
-from bank import Bank
-from ach import Ach
+from .utils import Utils
+from .ip import Ip
+from .bvn import Bvn
+from .account import Account
+from .bin import Bin
+from .disburse import Disburse
+from .card import Card
+from .bank import Bank
+from .ach import Ach
 
-class Flutterwave():
+
+class Flutterwave:
     """The Flutterwave Class
 
         Attributes:
@@ -19,19 +20,18 @@ class Flutterwave():
             debug: Turn on request debugging
     """
 
-    def __init__(self, apiKey, merchantKey, options={}):
+    def __init__(self, api_key, merchant_key, options=dict):
 
-        self.util = Utils(apiKey, merchantKey)
+        self.util = Utils(api_key, merchant_key)
 
-        if('env' in options and options["env"] == 'production'):
+        if 'env' in options and options["env"] == 'production':
             self.util.baseUrl = self.util.baseUrl_live
 
-        if("baseUrl" in options):
+        if "baseUrl" in options:
             self.util.setBaseUrl(options["baseUrl"])
 
-        if("debug" in options):
+        if "debug" in options:
             self.util.enableDebug(options["debug"])
-
 
         self.ip = Ip(self.util)
         self.bvn = Bvn(self.util)
@@ -41,4 +41,3 @@ class Flutterwave():
         self.card = Card(self.util)
         self.bank = Bank(self.util)
         self.ach = Ach(self.util)
-

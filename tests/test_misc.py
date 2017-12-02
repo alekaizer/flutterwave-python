@@ -20,39 +20,39 @@ class TestMisc(unittest.TestCase):
 
 
     def test1Ip(self):
-        print "\n---------###-- Flutterwave IP Check --###------------"
+        print("\n---------###-- Flutterwave IP Check --###------------")
         r = flw.ip.check(ip, country)
         d = json.loads(r.text)
 
         self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test2Bin(self):
-        print "\n---------###-- Flutterwave Card BIN Check --###------------"
+        print("\n---------###-- Flutterwave Card BIN Check --###------------")
         r = flw.bin.check(cardBin6, country)
         d = json.loads(r.text)
 
         self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     def test2Bin(self):
-        print "\n---------###-- Flutterwave Get Bank List --###------------"
+        print("\n---------###-- Flutterwave Get Bank List --###------------")
         r = flw.bank.list()
         d = json.loads(r.text)
 
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     def testEncryptDecrypt(self):
-        print "\n---------###-- Utilities : Encrypt and Decrypt --###------------"
-        print ">>> Plain"
+        print("\n---------###-- Utilities : Encrypt and Decrypt --###------------")
+        print(">>> Plain")
         plain = "I got encrypted, then reversed."
         encrypted = flw.util.encryptData(plain)
-        print ">>> Encrypted"
+        print(">>> Encrypted")
         decrypted = flw.util.decryptData(encrypted)
-        print ">>> Decrypted"
-        print decrypted
+        print(">>> Decrypted")
+        print(decrypted)
         
 
 

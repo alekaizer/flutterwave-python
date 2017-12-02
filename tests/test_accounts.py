@@ -24,12 +24,12 @@ class TestAccounts(unittest.TestCase):
     narration = "sample purchase"
     debitAccount = "0690000000"
     otp = "12345"
-    country = "NG"
+    country = "NGN"
     bankcode = "044"
 
 
     def test1AccountTokenize(self):
-        print "\n---------###-- Flutterwave Account Tokenize --###------------"
+        print("\n---------###-- Flutterwave Account Tokenize --###------------")
         r = flw.account.tokenize(debitAccount, country)
         d = json.loads(r.text)
 
@@ -37,11 +37,11 @@ class TestAccounts(unittest.TestCase):
         transactionReference = d["data"]["transactionReference"]
 
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         
 
     def test2AccountValidate(self):
-        print "\n---------###-- Flutterwave Account Tokenize Validate --###------------"
+        print("\n---------###-- Flutterwave Account Tokenize Validate --###------------")
         data = {
             "amount": amount,
             "ref": transactionReference,
@@ -57,11 +57,11 @@ class TestAccounts(unittest.TestCase):
         token = d["data"]["accountToken"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test3AccountCharge(self):
-        print "\n---------###-- Flutterwave Account Charge --###------------"
+        print("\n---------###-- Flutterwave Account Charge --###------------")
         data = {
             "amount": amount,
             "token": token,
@@ -73,11 +73,11 @@ class TestAccounts(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test4AccountLookup(self):
-        print "\n---------###-- Flutterwave Account Lookup --###------------"
+        print("\n---------###-- Flutterwave Account Lookup --###------------")
         data = {
             "destBankCode": bankcode,
             "recipientAccount": debitAccount,
@@ -88,11 +88,11 @@ class TestAccounts(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test5ChargeAny(self):
-        print "\n---------###-- Flutterwave ChargeAny --###------------"
+        print("\n---------###-- Flutterwave ChargeAny --###------------")
         data = {
             "narration": narration,
             "accountNumber": "0043480060",
@@ -114,11 +114,11 @@ class TestAccounts(unittest.TestCase):
         transactionReference = d["data"]["transactionreference"]
         
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test6ValidateChargeAnyRef(self):
-        print "\n---------###-- Flutterwave Validate ChargeAny --###------------"
+        print("\n---------###-- Flutterwave Validate ChargeAny --###------------")
         data = {
             "transactionRef": transactionReference,
             "otp": otp,
@@ -129,7 +129,7 @@ class TestAccounts(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
 if __name__ == '__main__':

@@ -14,7 +14,7 @@ IP
     country = "NG"             # Country code (NG)
 
     r = flw.ip.check(ipAddress, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {

@@ -1,13 +1,13 @@
-import requests
 import base64
-from Crypto.Cipher import DES3
-from Crypto.Util import Counter
 import hashlib
+
+import requests
+from Crypto.Cipher import DES3
 
 
 class Utils(object):
-    """Flutterwave Utility Class provides common functionalities for extending classes"""
-
+    """Flutterwave Utility Class provides common functionalities for extending
+    classes"""
 
     def __init__(self, apiKey, merchantKey):
         # API credentials
@@ -55,38 +55,35 @@ class Utils(object):
         # State
         self.debug = False
 
-
-
     def setBaseUrl(self, url):
         self.baseUrl = url
 
     def enableDebug(self, enable):
         self.debug = enable
 
-
     def encryptData(self, plainText):
-        """Provides encryption for plaintext content required in request data."""
+        """Provides encryption for plaintext content required in request
+        data."""
 
-        if(self.debug):
-            print plainText
+        if self.debug:
+            print(plainText)
 
         md5Key = hashlib.md5(self.apiKey.encode("utf-8")).digest()
-        md5Key = "{}{}".format(md5Key, md5Key[0:8])
+        md5Key += md5Key[0:8]
 
         blockSize = 8
         padDiff = blockSize - (len(plainText) % blockSize)
         cipher = DES3.new(md5Key, DES3.MODE_ECB)
 
-        plainText = "{}{}".format(plainText, "".join(chr(padDiff) * padDiff))
+        plainText += chr(padDiff) * padDiff
         encrypted = base64.b64encode(cipher.encrypt(plainText))
-        return encrypted
+        return encrypted.decode('utf-8')
 
-    
     def decryptData(self, ciphertext):
         """Provides decryption for encrypted content returned from flutterwave service"""
 
-        if(self.debug):
-            print ciphertext
+        if self.debug:
+            print(ciphertext)
 
         md5Key = hashlib.md5(self.apiKey.encode("utf-8")).digest()
         md5Key = "{}{}".format(md5Key, md5Key[0:8])
@@ -96,20 +93,22 @@ class Utils(object):
         decrypted = cipher.decrypt(base64.b64decode(ciphertext))
         return decrypted
 
-        
     def sendRequest(self, url, payload):
-        """Request Handler forwards http request to flutterwave remote service"""
-        if(self.debug):
-            print "{} :: {}{}".format(">>> URL", self.baseUrl, url)
-            print "{} :: {}".format(">>> PAYLOAD",payload)
+        """
+        Request Handler forwards http request to flutterwave remote service
+        """
+        if self.debug:
+            print("{} :: {}{}".format(">>> URL", self.baseUrl, url))
+            print("{} :: {}".format(">>> PAYLOAD", payload), "\n>>> {} :: {}".format("TYPE", type(payload)))
 
-        r = requests.post("{}{}".format(self.baseUrl, url), json=payload, headers={})
+        r = requests.post("{}{}".format(self.baseUrl, url), json=payload,
+                          headers={})
 
-        if(self.debug):
-            print "{} :: {} - {}".format(">>> RESPONSE", r.status_code, r.text)
+        if self.debug:
+            print("{} :: {} - {}".format(">>> RESPONSE", r.status_code, r.text))
+            print("{} :: {}".format(">>> HEADER", r.headers))
 
         return r
-
 
     def countryList(self):
         """Returns a List of Countries"""
@@ -135,7 +134,6 @@ class Utils(object):
                 "name": "United Kingdom"
             },
         }
-
 
     def currencyList(self):
         return {
@@ -164,4 +162,3 @@ class Utils(object):
                 "name": "Kenya Shilling"
             },
         }
-

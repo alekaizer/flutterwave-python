@@ -11,7 +11,7 @@ ACH
     flw = Flutterwave("<api_key>", "<merchant_key>", {"debug": True})
 
     r = flw.ach.listInstitutions()
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -57,7 +57,7 @@ ACH
     institutionId = "5301a93ac140de84910000e0"   # Institution ID returned from Institutions list
 
     r = flw.ach.getInstitution()
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -106,7 +106,7 @@ ACH
     }
 
     r = flw.ach.getUserTransactions(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {

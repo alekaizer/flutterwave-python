@@ -1,4 +1,5 @@
-from utils import Utils
+from .utils import Utils
+
 
 class Disburse(Utils):
     """Flutterwave Disburse module
@@ -8,7 +9,6 @@ class Disburse(Utils):
 
     def __init__(self, util):
         self.util = util
-
 
     def linkAccount(self, accountNumber, country):
         """Request to link an account for disbursement.
@@ -22,9 +22,8 @@ class Disburse(Utils):
             "accountnumber": self.util.encryptData(accountNumber),
             "country": self.util.encryptData(country)
         }
-        return self.util.sendRequest(self.util.disburseLinkAccountRoute, payload);
-
-
+        return self.util.sendRequest(self.util.disburseLinkAccountRoute,
+                                     payload);
 
     def validateLinkAccount(self, relatedRef, otpType, otp, country):
         """Request a disburse to a destination account.
@@ -42,9 +41,8 @@ class Disburse(Utils):
             "otptype": self.util.encryptData(otpType),
             "country": self.util.encryptData(country)
         }
-        return self.util.sendRequest(self.util.disburseValidateLinkAccountRoute, payload);
-
-
+        return self.util.sendRequest(self.util.disburseValidateLinkAccountRoute,
+                                     payload);
 
     def getLinkedAccounts(self, country):
         """Returned your linked Accounts
@@ -54,9 +52,8 @@ class Disburse(Utils):
             "merchantid": self.util.merchantKey,
             "country": self.util.encryptData(country)
         }
-        return self.util.sendRequest(self.util.disburseGetLinkedAccountRoute, payload);
-    
-
+        return self.util.sendRequest(self.util.disburseGetLinkedAccountRoute,
+                                     payload);
 
     def send(self, requestData):
         """Request a disburse to a destination account.
@@ -79,8 +76,10 @@ class Disburse(Utils):
             "uniquereference": self.util.encryptData(requestData['ref']),
             "destbankcode": self.util.encryptData(requestData['bankCode']),
             "narration": self.util.encryptData(requestData['narration']),
-            "recipientaccount": self.util.encryptData(requestData['creditAccount']),
-            "recipientname": self.util.encryptData(requestData['recipientName']),
+            "recipientaccount": self.util.encryptData(
+                requestData['creditAccount']),
+            "recipientname": self.util.encryptData(
+                requestData['recipientName']),
             "sendername": self.util.encryptData(requestData['senderName']),
             "country": self.util.encryptData(requestData['country']),
             "currency": self.util.encryptData(requestData['currency'])

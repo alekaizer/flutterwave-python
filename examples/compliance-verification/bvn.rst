@@ -15,7 +15,7 @@ BVN
     country = "NG"     # Country code (NG)
 
     r = flw.bvn.verify(bvn, verifyUsing, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -42,7 +42,7 @@ BVN
     country = "NG"                      # Country code (NG)
 
     r = flw.bvn.resendOtp(verifyUsing, transactionReference, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -68,7 +68,7 @@ BVN
     country = "NG"                       # Country code (NG)
 
     r = flw.bvn.validate(bvn, otp, transactionReference, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {

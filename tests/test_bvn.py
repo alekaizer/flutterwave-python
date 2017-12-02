@@ -26,7 +26,7 @@ class TestBvn(unittest.TestCase):
 
 
     def test1Bvn(self):
-        print "\n---------###-- Flutterwave BVN verify --###------------"
+        print("\n---------###-- Flutterwave BVN verify --###------------")
         r = flw.bvn.verify(bvn, verifyUsing, country)
         d = json.loads(r.text)
 
@@ -34,25 +34,25 @@ class TestBvn(unittest.TestCase):
         transactionReference = d["data"]["transactionReference"]
 
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test2ResendOtp(self):
-        print "\n---------###-- Flutterwave BVN resendotp --###------------"
+        print("\n---------###-- Flutterwave BVN resendotp --###------------")
         r = flw.bvn.resendOtp(verifyUsing, transactionReference, country)
         d = json.loads(r.text)
 
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     
     def test3BvnValidate(self):
-        print "\n---------###-- Flutterwave BVN validate --###------------"
+        print("\n---------###-- Flutterwave BVN validate --###------------")
         r = flw.bvn.validate(bvn, otp, transactionReference, country)
         d = json.loads(r.text)
 
         # self.assertEqual(d["data"]["responseCode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
 if __name__ == '__main__':

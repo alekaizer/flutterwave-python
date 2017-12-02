@@ -11,7 +11,7 @@ Utility
     flw = Flutterwave("<api_key>", "<merchant_key>", {"debug": True})
 
     r = flw.bank.list()
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -87,17 +87,17 @@ Utility
     from flutterwave import Flutterwave
     flw = Flutterwave("<api_key>", "<merchant_key>", {"debug": True})
 
-    print ">>> Plain"
+    print(">>> Plain")
     plain = "I got encrypted, then reversed."
 
     encrypted = flw.util.encryptData(plain)
 
-    print ">>> Encrypted"
+    print(">>> Encrypted"
 
     decrypted = flw.util.decryptData(encrypted)
 
-    print ">>> Decrypted"
-    print decrypted
+    print(">>> Decrypted")
+    print(decrypted)
 
     # RESPONSE
     # >>> Plain
@@ -116,7 +116,7 @@ Utility
     from flutterwave import Flutterwave
     flw = Flutterwave("<api_key>", "<merchant_key>", {"debug": True})
 
-    print flw.util.currencyList()
+    print(flw.util.currencyList())
 
     # RESPONSE
     # {
@@ -137,7 +137,7 @@ Utility
     from flutterwave import Flutterwave
     flw = Flutterwave("<api_key>", "<merchant_key>", {"debug": True})
 
-    print flw.util.countryList()
+    print(flw.util.countryList())
 
     # RESPONSE
     # {

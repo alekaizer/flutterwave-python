@@ -1,5 +1,3 @@
-from utils import Utils
-
 class Ip(object):
     """Flutterwave IP class
     """
@@ -7,15 +5,14 @@ class Ip(object):
     def __init__(self, util):
         self.util = util
 
-
-    def check(self, ipAddress, country):
+    def check(self, ip_address, country):
         """Request location and information on a specified IP
         
-        ipAddress -> IP address to search
+        ip_address -> IP address to search
         country -> Country code (NGN)
         '"""
         payload = {
-            'ip': ipAddress,
+            'ip': ip_address,
             'country': country
         }
         return self.util.sendRequest(self.util.ipCheckRoute, payload)

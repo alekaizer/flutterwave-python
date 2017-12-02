@@ -45,10 +45,10 @@ class TestDisburse(unittest.TestCase):
 
 
     def test1LinkAccount(self):
-        print "\n---------###-- Flutterwave Link Account --###------------"
+        print("\n---------###-- Flutterwave Link Account --###------------")
 
         r = flw.disburse.linkAccount(debitAccount, country)
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         d = json.loads(r.text)
 
         global relatedRef
@@ -59,10 +59,10 @@ class TestDisburse(unittest.TestCase):
 
 
     def test2ValidateLinkAccount(self):
-        print "\n---------###-- Flutterwave Validate Link Account S1 --###------------"
+        print("\n---------###-- Flutterwave Validate Link Account S1 --###------------")
 
         r = flw.disburse.validateLinkAccount(relatedRef, otpType1, otp1, country)
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         d = json.loads(r.text)
 
         self.assertEqual(d["data"]["responsecode"], "00")
@@ -70,10 +70,10 @@ class TestDisburse(unittest.TestCase):
 
 
     def test3ValidateLinkAccount(self):
-        print "\n---------###-- Flutterwave Validate Link Account S2 --###------------"
+        print("\n---------###-- Flutterwave Validate Link Account S2 --###------------")
 
         r = flw.disburse.validateLinkAccount(relatedRef, otpType2, otp2, country)
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         d = json.loads(r.text)
 
         global accountToken
@@ -84,10 +84,10 @@ class TestDisburse(unittest.TestCase):
 
 
     def test4GetLinkedAccounts(self):
-        print "\n---------###-- Flutterwave Get Linked Accounts --###------------"
+        print("\n---------###-- Flutterwave Get Linked Accounts --###------------")
 
         r = flw.disburse.getLinkedAccounts(country)
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         d = json.loads(r.text)
 
         self.assertEqual(d["data"]["responsecode"], "00")
@@ -95,7 +95,7 @@ class TestDisburse(unittest.TestCase):
 
 
     def test5DisburseSend(self):
-        print "\n---------###-- Flutterwave Disburse send --###------------"
+        print("\n---------###-- Flutterwave Disburse send --###------------")
         data = {
             "amount": amount,
             "accountToken": accountToken,
@@ -109,7 +109,7 @@ class TestDisburse(unittest.TestCase):
             "currency": currency
         }
         r = flw.disburse.send(data)
-        print "{}".format(r.text)
+        print("{}".format(r.text))
         d = json.loads(r.text)
 
         self.assertEqual(d["data"]["responsecode"], "00")

@@ -50,7 +50,7 @@ class TestCards(unittest.TestCase):
 
 
     def test1CardTokenize(self):
-        print "\n---------###-- Flutterwave Card Tokenize --###------------"
+        print("\n---------###-- Flutterwave Card Tokenize --###------------")
         data = {
             "validateOption": validateOption,
             "authModel": authModel,
@@ -69,11 +69,11 @@ class TestCards(unittest.TestCase):
         otpTransactionIdentifier = d["data"]["otptransactionidentifier"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     
     def test2CardValidate(self):
-        print "\n---------###-- Flutterwave Card Validate Tokenize --###------------"
+        print("\n---------###-- Flutterwave Card Validate Tokenize --###------------")
         data = {
             "otp": otp,
             "otpTransactionIdentifier": otpTransactionIdentifier,
@@ -87,11 +87,11 @@ class TestCards(unittest.TestCase):
         cardToken = d["data"]["responsetoken"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test3CardCharge(self):
-        print "\n---------###-- Flutterwave Card Charge --###------------"
+        print("\n---------###-- Flutterwave Card Charge --###------------")
         data = {
             "amount": amount,
             "authModel": authModel,
@@ -115,11 +115,11 @@ class TestCards(unittest.TestCase):
         otpTransactionIdentifier = d["data"]["otptransactionidentifier"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     
     def test4CardValidate(self):
-        print "\n---------###-- Flutterwave Card Validate Charge --###------------"
+        print("\n---------###-- Flutterwave Card Validate Charge --###------------")
         data = {
             "otp": otp,
             "otpTransactionIdentifier": otpTransactionIdentifier,
@@ -130,11 +130,11 @@ class TestCards(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test5ChargeWithToken(self):
-        print "\n---------###-- Flutterwave Card Charge with Token --###------------"
+        print("\n---------###-- Flutterwave Card Charge with Token --###------------")
         data = {
             "amount": amount,
             "cardToken": cardToken,
@@ -151,21 +151,22 @@ class TestCards(unittest.TestCase):
         transactionRef = d["data"]["transactionreference"]
         
         self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test6VerifyCharge(self):
-        print "\n---------###-- Flutterwave Verify Card Charge --###------------"
+        print("\n---------###-- Flutterwave Verify Card Charge --###------------")
 
         r = flw.card.verifyCharge(transactionRef, country)
         d = json.loads(r.text)
-        
+
+        print("{}".format(r.text))
         self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test7CardPreauth(self):
-        print "\n---------###-- Flutterwave Card Preauth 1 --###------------"
+        print("\n---------###-- Flutterwave Card Preauth 1 --###------------")
         data = {
             "amount": amount,
             "currency": currency,
@@ -182,11 +183,11 @@ class TestCards(unittest.TestCase):
         transactionRef = d["data"]["transactionreference"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test8CardCapture(self):
-        print "\n---------###-- Flutterwave Card Capture 1 --###------------"
+        print("\n---------###-- Flutterwave Card Capture 1 --###------------")
         data = {
             "amount": amount,
             "currency": currency,
@@ -199,11 +200,11 @@ class TestCards(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test9CardPreauth(self):
-        print "\n---------###-- Flutterwave Card Preauth 2 --###------------"
+        print("\n---------###-- Flutterwave Card Preauth 2 --###------------")
         data = {
             "amount": amount,
             "currency": currency,
@@ -220,11 +221,11 @@ class TestCards(unittest.TestCase):
         otpTransactionIdentifier = d["data"]["transactionreference"]
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test91CardVoid(self):
-        print "\n---------###-- Flutterwave Card Void 2 --###------------"
+        print("\n---------###-- Flutterwave Card Void 2 --###------------")
         data = {
             "amount": amount,
             "currency": currency,
@@ -237,10 +238,10 @@ class TestCards(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     def test92CardRefund(self):
-        print "\n---------###-- Flutterwave Card Refund --###------------"
+        print("\n---------###-- Flutterwave Card Refund --###------------")
         data = {
             "amount": amount,
             "currency": currency,
@@ -253,11 +254,11 @@ class TestCards(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
     
     def test93CardBalanceEnquiry(self):
-        print "\n---------###-- Flutterwave Card Balance Enquiry --###------------"
+        print("\n---------###-- Flutterwave Card Balance Enquiry --###------------")
         data = {
             "cardNumber": cardNumber,
             "cvv": cvv,
@@ -277,11 +278,11 @@ class TestCards(unittest.TestCase):
         transactionRef = d['data']['transactionref']
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)
+        print("{}".format(r.text))
 
 
     def test94CardRefund(self):
-        print "\n---------###-- Flutterwave Validate Card Balance Enquiry --###------------"
+        print("\n---------###-- Flutterwave Validate Card Balance Enquiry --###------------")
         data = {
             "otp": otp,
             "otpTransactionIdentifier": otpTransactionIdentifier,
@@ -293,7 +294,7 @@ class TestCards(unittest.TestCase):
         d = json.loads(r.text)
         
         # self.assertEqual(d["data"]["responsecode"], "00")
-        print "{}".format(r.text)        
+        print("{}".format(r.text))
 
 
 if __name__ == '__main__':

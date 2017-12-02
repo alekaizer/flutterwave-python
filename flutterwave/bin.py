@@ -1,4 +1,5 @@
-from utils import Utils
+from .utils import Utils
+
 
 class Bin(Utils):
     """Flutterwave BIN class
@@ -6,7 +7,6 @@ class Bin(Utils):
 
     def __init__(self, util):
         self.util = util
-
 
     def check(self, cardBin, country):
         """Request card details using Bin

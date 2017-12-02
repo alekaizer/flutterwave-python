@@ -58,7 +58,7 @@ To debit an account, in two steps: first, tokenize the account, then charge the 
     }
 
     r = flw.account.charge(payload)
-    print "{}".format(r.text)
+    print("{}".format(r.text)
 
     # Response
     # {

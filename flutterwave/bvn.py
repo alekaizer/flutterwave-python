@@ -1,4 +1,5 @@
-from utils import Utils
+from .utils import Utils
+
 
 class Bvn(Utils):
     """Flutterwave BVN module
@@ -8,9 +9,7 @@ class Bvn(Utils):
 
     def __init__(self, util):
         self.util = util
-        
-        
-    
+
     def verify(self, userBvn, verifyUsing, country):
         """Request verification for a users BVN
         
@@ -26,7 +25,6 @@ class Bvn(Utils):
         }
         return self.util.sendRequest(self.util.bvnVerifyRoute, payload);
 
-    
     def validate(self, userBvn, otp, transactionReference, country):
         """Request validation for a users BVN
         
@@ -44,7 +42,6 @@ class Bvn(Utils):
         }
         return self.util.sendRequest(self.util.bvnValidateRoute, payload);
 
-
     def resendOtp(self, verifyUsing, transactionReference, country):
         """Resend OTP for BVN verification
         
@@ -59,4 +56,3 @@ class Bvn(Utils):
             "country": self.util.encryptData(country)
         }
         return self.util.sendRequest(self.util.bvnResendOTPRoute, payload);
-

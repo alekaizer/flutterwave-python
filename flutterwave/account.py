@@ -1,4 +1,3 @@
-
 class Account(object):
     """Flutterwave Accounts module
 
@@ -8,7 +7,6 @@ class Account(object):
     def __init__(self, util):
         self.util = util
 
-    
     def tokenize(self, accountNumber, country):
         """Request to tokenize an account
         
@@ -20,8 +18,7 @@ class Account(object):
             "merchantid": self.util.merchantKey,
             "country": self.util.encryptData(country)
         }
-        return self.util.sendRequest(self.util.accountTokenizeRoute, payload);
-
+        return self.util.sendRequest(self.util.accountTokenizeRoute, payload)
 
     def validate(self, requestData):
         """Request to validate account tokenization
@@ -35,7 +32,8 @@ class Account(object):
         '"""
         payload = {
             "merchantid": self.util.merchantKey,
-            "accountNumber": self.util.encryptData(requestData['accountNumber']),
+            "accountNumber": self.util.encryptData(
+                requestData['accountNumber']),
             "otp": self.util.encryptData(requestData['otp']),
             "reference": self.util.encryptData(requestData['ref']),
             "billingamount": self.util.encryptData(requestData['amount']),
@@ -43,7 +41,6 @@ class Account(object):
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.accountValidateRoute, payload);
-
 
     def charge(self, requestData):
         """Request to charge an account using an account token
@@ -62,7 +59,6 @@ class Account(object):
         }
         return self.util.sendRequest(self.util.accountChargeRoute, payload);
 
-
     def lookup(self, requestData):
         """Request to lookup an account number, returns account details.
         
@@ -73,11 +69,11 @@ class Account(object):
         payload = {
             "merchantid": self.util.merchantKey,
             "destbankcode": self.util.encryptData(requestData['destBankCode']),
-            "recipientaccount": self.util.encryptData(requestData['recipientAccount']),
+            "recipientaccount": self.util.encryptData(
+                requestData['recipientAccount']),
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.accountLookupRoute, payload);
-
 
     def chargeAny(self, requestData):
         """Request to charge any Nigerian bank account
@@ -97,19 +93,20 @@ class Account(object):
         payload = {
             "merchantid": self.util.merchantKey,
             "narration": self.util.encryptData(requestData['narration']),
-            "accountnumber": self.util.encryptData(requestData['accountNumber']),
+            "accountnumber": self.util.encryptData(
+                requestData['accountNumber']),
             "bankcode": self.util.encryptData(requestData['bankCode']),
             "passcode": self.util.encryptData(requestData['passcode']),
-            "amount": self.util.encryptData(requestData['amount']),        
-            "currency": self.util.encryptData(requestData['currency']),      
+            "amount": self.util.encryptData(requestData['amount']),
+            "currency": self.util.encryptData(requestData['currency']),
             "firstname": self.util.encryptData(requestData['firstName']),
             "lastname": self.util.encryptData(requestData['lastName']),
             "email": self.util.encryptData(requestData['email']),
-            "transactionreference": self.util.encryptData(requestData['transactionRef']),
+            "transactionreference": self.util.encryptData(
+                requestData['transactionRef']),
             "country": self.util.encryptData(requestData['country'])
         }
         return self.util.sendRequest(self.util.accountChargeAnyRoute, payload);
-
 
     def validateChargeAnyRef(self, requestData):
         """Request to a chargeAny transaction using transaction reference
@@ -121,11 +118,12 @@ class Account(object):
         payload = {
             "merchantid": self.util.merchantKey,
             "otp": self.util.encryptData(requestData['otp']),
-            "transactionreference": self.util.encryptData(requestData['transactionRef']),
+            "transactionreference": self.util.encryptData(
+                requestData['transactionRef']),
             "country": self.util.encryptData(requestData['country'])
         }
-        return self.util.sendRequest(self.util.accountValidateChargeAnyRefRoute, payload);
-
+        return self.util.sendRequest(self.util.accountValidateChargeAnyRefRoute,
+                                     payload);
 
     def validateChargeAnyPhone(self, requestData):
         """Request to a chargeAny transaction using phonenumber
@@ -140,4 +138,5 @@ class Account(object):
             "phonenumber": self.util.encryptData(requestData['phoneNumber']),
             "country": self.util.encryptData(requestData['country'])
         }
-        return self.util.sendRequest(self.util.accountValidateChargeAnyPhoneRoute, payload);
+        return self.util.sendRequest(
+            self.util.accountValidateChargeAnyPhoneRoute, payload);

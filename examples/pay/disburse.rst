@@ -15,7 +15,7 @@ Disburse
     country = "NG"               # Country code (NG)
 
     r = flw.disburse.linkAccount(debitAccount, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -42,7 +42,7 @@ Disburse
     country = "NG"               # Country code (NG)
 
     r = flw.disburse.validateLinkAccount(relatedRef, otpType, otp, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -70,7 +70,7 @@ Disburse
     country = "NG"               # Country code (NG)
 
     r = flw.disburse.validateLinkAccount(relatedRef, otpType, otp, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -95,7 +95,7 @@ Disburse
     country = "NG"  # Country code (NG)
 
     r = flw.disburse.getLinkedAccounts(country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -144,7 +144,7 @@ Disburse
         "currency": "NGN"                 # Transaction Currency
     }
     r = flw.disburse.send(data)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {

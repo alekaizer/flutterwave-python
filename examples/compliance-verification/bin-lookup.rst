@@ -14,7 +14,7 @@ Card Bin
     country = "NG"     # Country code (NGN)
 
     r = flw.bin.check(cardBin6, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {

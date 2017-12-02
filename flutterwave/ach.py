@@ -1,4 +1,5 @@
-from utils import Utils
+from .utils import Utils
+
 
 class Ach(Utils):
     """Flutterwave Automated Clearing House class
@@ -6,7 +7,6 @@ class Ach(Utils):
 
     def __init__(self, util):
         self.util = util
-
 
     def listInstitutions(self, country):
         """Request a list of ACH Institutions
@@ -18,7 +18,6 @@ class Ach(Utils):
             "country": self.util.encryptData(country)
         }
         return self.util.sendRequest(self.util.achInstitutionsRoute, payload);
-
 
     def getInstitution(self, institutionId, country):
         """Request details for a specific ACH Institution
@@ -33,6 +32,8 @@ class Ach(Utils):
         }
         return self.util.sendRequest(self.util.achInstitutionRoute, payload);
 
+    def addUser(self, request_data):
+        return self.getUserTransactions(request_data)
 
     def getUserTransactions(self, requestData):
         """Request to add a user to an ACH Institution
@@ -50,12 +51,12 @@ class Ach(Utils):
             "username": self.util.encryptData(requestData['username']),
             "password": self.util.encryptData(requestData['password']),
             "email": self.util.encryptData(requestData['email']),
-            "institution": self.util.encryptData(requestData['institutionType']),
+            "institution": self.util.encryptData(
+                requestData['institutionType']),
             "country": self.util.encryptData(requestData['country'])
         }
 
-        if('pin' in requestData):
+        if 'pin' in requestData:
             payload["pin"] = self.util.encryptData(requestData['pin']),
 
         return self.util.sendRequest(self.util.achAddUserRoute, payload);
-        

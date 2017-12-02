@@ -14,7 +14,7 @@ Account
     countryCode = "NG"           # Country code (NG)
 
     r = flw.account.tokenize(debitAccount, countryCode)
-    print "{}".format(r.text)
+    print("{}".format(r.text))
 
     # RESPONSE
     # {
@@ -45,7 +45,7 @@ Account
     }
 
     r = flw.account.validate(payload)
-    print "{}".format(r.text)
+    print("{}".format(r.text)
 
     # Response
     # {
@@ -75,7 +75,7 @@ Account
     }
 
     r = flw.account.charge(debitAccount, country)
-    print "{}".format(r.text)
+    print("{}".format(r.text)
 
     # Response
     # {
@@ -103,7 +103,7 @@ Account
     }
 
     r = flw.account.lookup(payload)
-    print "{}".format(r.text)
+    print("{}".format(r.text)
 
     # Response
     # {
